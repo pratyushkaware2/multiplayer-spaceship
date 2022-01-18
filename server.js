@@ -6,4 +6,4 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));		
 app.get("/backendTest", (req, res) => res.send({data: 'Test'}));
 
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
