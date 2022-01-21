@@ -1,5 +1,7 @@
 import React, {Component} from "react";
+import io from 'socket.io-client'
 
+const socketUrl = "http://localhost:4000"
 
 export default class App extends Component {
   constructor(){
@@ -10,18 +12,21 @@ export default class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch("/backendTest").then(response => response.json()).then(response => {
-      console.log(response);
+
+    const socket = io(socketUrl)
+    socket.on('connect', () =>{
+      console.log("Connected Socket ID: " + socket.id);
       this.setState({
-          myValue : response.data
-        });
-    });
+        myValue: socket.id
+      });
+    })
+
   };
 
   render(){
     return (
       <div>
-      <h1> Received {this.state.myValue}</h1>
+      <h1> Socket ID: {this.state.myValue}</h1>
       </div>
     );
   }
