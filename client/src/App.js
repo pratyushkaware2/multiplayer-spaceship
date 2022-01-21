@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import io from 'socket.io-client'
 
-const socketUrl = "http://localhost:4000"
+const socketUrl = ":4000"
 
 export default class App extends Component {
   constructor(){
