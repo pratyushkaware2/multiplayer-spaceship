@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import io from 'socket.io-client'
 
-const socketUrl = ":4000"
+const socketUrl = "http://localhost:4000"
 
 export default class App extends Component {
   constructor(){
@@ -13,7 +13,7 @@ export default class App extends Component {
 
   componentDidMount = () => {
 
-    const socket = io(socketUrl)
+    const socket = io()
     socket.on('connect', () =>{
       console.log("Connected Socket ID: " + socket.id);
       this.setState({
